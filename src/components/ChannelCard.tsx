@@ -14,7 +14,18 @@ interface ChannelCardProps {
 }
 const ChannelCard: React.FC<ChannelCardProps> = ({ channelDetail }) => {
   return (
-    <Box sx={{ boxShadow: "none", borderRadius: "20px" }}>
+    <Box
+      sx={{
+        boxShadow: "none",
+        borderRadius: "20px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        width: { xs: "356px", md: "320px" },
+        height: "326px",
+        margin: "auto",
+      }}
+    >
       <Link to={`/channel/${channelDetail?.id?.channelId}`}>
         <CardContent
           sx={{
@@ -37,10 +48,18 @@ const ChannelCard: React.FC<ChannelCardProps> = ({ channelDetail }) => {
             border: "1px solid #e3e3e3",
           }}
         />
-        <Typography variant="h6">
-          {channelDetail?.snippet?.title}{" "}
+        <Typography variant="h6" sx={{ color: "white" }}>
+          {channelDetail?.snippet?.title}
           <CheckCircle sx={{ fontSize: 14, color: "gray", ml: "5px" }} />
         </Typography>
+        {channelDetail?.statistics?.subscriberCount && (
+          <Typography>
+            {parseInt(
+              channelDetail?.statistics?.subscriberCount
+            ).toLocaleString()}
+            Subscribers
+          </Typography>
+        )}
       </Link>
     </Box>
   );

@@ -16,7 +16,7 @@ interface snippetModel {
   publishTime: Date;
   publishedAt: Date;
   thumbnails?: thumbNailModel;
-  title?: string
+  title?: string;
 }
 interface basicIdModel {
   kind: string;
@@ -29,4 +29,5 @@ export interface videosModel {
   snippet: snippetModel;
   thumbnails?: thumbNailModel;
   title?: string;
+  statistics?: { subscriberCount: string };
 }
