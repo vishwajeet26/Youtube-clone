@@ -23,11 +23,16 @@ interface basicIdModel {
   videoId?: string;
   channelId?: string;
 }
+interface statisticsModel {
+  subscriberCount: string;
+  viewCount: string;
+  likeCount: string;
+}
 export interface videosModel {
   id: basicIdModel;
   kind: string;
   snippet: snippetModel;
   thumbnails?: thumbNailModel;
   title?: string;
-  statistics?: { subscriberCount: string };
+  statistics?: statisticsModel;
 }

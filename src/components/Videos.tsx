@@ -8,10 +8,17 @@ import { VideoCard, ChannelCard } from "./";
 
 interface VideosProps {
   videos: videosModel[];
+  direction?: 'column';
 }
-const Videos: React.FC<VideosProps> = ({ videos }) => {
+const Videos: React.FC<VideosProps> = ({ videos, direction }) => {
+  if(!videos) return <p>Loading...</p>
   return (
-    <Stack direction="row" flexWrap="wrap" justifyContent="start" gap={2}>
+    <Stack
+      direction={direction || "row"}
+      flexWrap="wrap"
+      justifyContent="start"
+      gap={2}
+    >
       {videos.map((item) => (
         <Box key={item.title}>
           {item.id.videoId && <VideoCard video={item} />}

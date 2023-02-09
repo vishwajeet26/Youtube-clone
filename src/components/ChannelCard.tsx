@@ -11,8 +11,9 @@ import { videosModel } from "../utils/models";
 
 interface ChannelCardProps {
   channelDetail: videosModel;
+  styles?: React.CSSProperties;
 }
-const ChannelCard: React.FC<ChannelCardProps> = ({ channelDetail }) => {
+const ChannelCard: React.FC<ChannelCardProps> = ({ channelDetail, styles }) => {
   return (
     <Box
       sx={{
@@ -24,6 +25,7 @@ const ChannelCard: React.FC<ChannelCardProps> = ({ channelDetail }) => {
         width: { xs: "356px", md: "320px" },
         height: "326px",
         margin: "auto",
+        ...styles,
       }}
     >
       <Link to={`/channel/${channelDetail?.id?.channelId}`}>
@@ -53,10 +55,10 @@ const ChannelCard: React.FC<ChannelCardProps> = ({ channelDetail }) => {
           <CheckCircle sx={{ fontSize: 14, color: "gray", ml: "5px" }} />
         </Typography>
         {channelDetail?.statistics?.subscriberCount && (
-          <Typography>
+          <Typography color={"white"} textAlign="center">
             {parseInt(
               channelDetail?.statistics?.subscriberCount
-            ).toLocaleString()}
+            ).toLocaleString()}{" "}
             Subscribers
           </Typography>
         )}
